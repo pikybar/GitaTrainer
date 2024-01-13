@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Gita Trainer</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+ <script defer src="script.js"></script>
+
+  <h1>Gita Trainer</h1>
+
+  <div id="set">
+    <button id="settings">&#9881;</button>
+  </div>
+
+  <div id="menu">
+    <h2>Prompt length</h2>
+    <button class="mb on q1">Quarter</button>
+    <button class="mb q1">Half</button>
+    <button class="mb q1">Full Verse</button>
+
+    <br>
+
+    <h2>Allow verses from multiple chapters together</h2>
+    <button class="mb q2">Yes</button>
+    <button class="mb on q2">No</button>
+
+    <br>
+
+    <h3>Happy practicing!</h3>
+  </div>
+
+  <div id="all" class="container">
+
+    <div id="selection">
+      <div id="chBox">
+        <h2>Select Chapter</h2>
+      </div>  
+      
+      <div id="verseBox">
+        <h2>Select Verses</h2>
+        <button id="select" class="dis">Select All</button>
+        <button id="deselect" class="dis">Deselect All</button>
+        <br>
+      </div> 
+    </div>
+    
+    <div id="generation">
+      <button class="bubbly-button" id="gen">Generate Verse</button>
+      
+      <h2>Prompt</h2>
+      <div id="rep">
+        <audio id="prompt" controls autoplay>Audio unavailable</audio>
+        <button id="replay" class="dis">&#x21ba;</button>
+      </div>
+      
+      <h2 id="ans">Answer</h2>
+      <audio id="answer" controls>Audio unavailable</audio>
+      <br>
+      <button id="show" class="dis">Show Verse</button>
+      <h2 id="showVerse"></h2>
+    </div>
+    
+  </div>
+
+</body>
+
+</html>
