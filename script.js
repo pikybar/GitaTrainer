@@ -2,6 +2,7 @@ const versesPerCh = [47, 72, 43, 42, 29, 47, 30, 28, 34, 42, 55, 20, 34, 27, 20,
 const fivers = ["1 1", "1 2", "1 21", "1 24", "1 28", "1 47", "2 1", "2 2", "2 4", "2 9", "2 11", "2 21", "2 24", "2 28", "2 54", "2 55", "3 1", "3 3", "3 36", "3 37", "4 1", "4 4", "4 5", "5 1", "5 2", "6 1", "6 33", "6 35", "6 37", "6 40", "7 1", "8 1", "8 3", "9 1", "10 1", "10 12", "10 19", "11 1", "11 5", "11 9", "11 15", "11 32", "11 35", "11 36", "11 47", "11 50", "11 51", "11 52", "12 1", "12 2", "13 1", "13 2", "14 1", "14 21", "14 22", "15 1", "16 1", "17 1", "17 2", "18 1", "18 2", "18 73", "18 74"];
 
 var verseList = [];
+var usedVerses = [];
 var c;
 var current;
 var currentChapter;
@@ -64,7 +65,11 @@ function addVerse(v) {
 }
 
 function remVerse(v) {
-  verseList.splice(verseList.indexOf(c + " " + v), 1)
+  if (verseList.includes(c + " " + v)) {
+    verseList.splice(verseList.indexOf(c + " " + v), 1)
+  } else {
+    usedVerses.splice(usedVerses.indexOf(c + " " + v), 1)
+  }
 }
 
 function addVerseButtons(ch) {
@@ -117,10 +122,16 @@ function showV() {
 function generate() {
   showVerse.style.display = "none";
   show.innerHTML = "Show Verse";
-  
+
+  if (verseList.length == 0) {
+    verseList = usedVerses;
+    usedVerses = [];
+  }
   current = verseList[Math.floor(Math.random() * verseList.length)];
   currentChapter = current.substring(0, current.indexOf(" ")).padStart(2, "0");
   currentVerse = Number(current.substring(current.indexOf(" ") + 1));
+  usedVerses.push(current);
+  verseList.splice(verseList.indexOf(current), 1);
   
   showVerse.innerHTML = current.substring(0, current.indexOf(" ")) + "." + currentVerse;
   show.classList.remove("dis");
