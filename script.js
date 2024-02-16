@@ -138,7 +138,7 @@ function generate() {
   replay.classList.remove("dis");
   
   lines = 4;
-  if (fivers.includes(current)) {
+  if (fivers.includes(current.substring(0, current.indexOf(" ")) + " " + (currentVerse-1))) {
     lines = 5;
   }
 
